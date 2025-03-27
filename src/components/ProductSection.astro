@@ -1,0 +1,18 @@
+---
+import ProductCard from "./ProductCard.tsx";
+import ProductInformation from "./ProductInformation.tsx";
+import type { IProduct } from "../types/product.interface";
+
+// Define the interface for the component props
+interface Props {
+  product: IProduct;
+}
+
+// Get the product from props
+const { product } = Astro.props;
+---
+
+<section>
+  <ProductCard client:load product={product} />
+  <ProductInformation client:load product={product} />
+</section>

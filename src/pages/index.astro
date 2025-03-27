@@ -1,16 +1,73 @@
 ---
+import Layout from "../layouts/Layout.astro";
+// Import Preact components
+import ProductSection from "../components/ProductSection.astro";
+import RelatedProducts from "../components/RelatedProducts.tsx";
+import VisitWebsite from "../components/VisitWebsite.tsx";
+import productData from "../assets/data/products.json";
+import type { IProduct, IRelatedProduct } from "../types/product.interface";
 
+// ... [keep all your existing server-side code] ...
+// Default product ID
+const DEFAULT_PRODUCT_ID = 454;
+
+// Get the product ID from the URL query parameter
+let productIdNum = DEFAULT_PRODUCT_ID;
+
+// In SSR mode, access URL parameters from the request
+if (Astro.request) {
+  try {
+    const url = new URL(Astro.request.url);
+    const paramId = url.searchParams.get("productId");
+    if (paramId) {
+      productIdNum = parseInt(paramId);
+    }
+  } catch (error) {
+    console.error("Error parsing URL:", error);
+  }
+}
+
+// Find the selected product from the products array
+const foundProduct = productData.products.find(
+  (product) => product.id === productIdNum
+);
+const selectedProduct: IProduct = foundProduct || productData.products[0];
+
+// Log for debugging (only in development)
+if (import.meta.env.DEV) {
+  console.log(
+    `Product ID: ${productIdNum} | Found: ${foundProduct ? "Yes" : "No"} | Selected: ${selectedProduct.id}`
+  );
+}
+
+// Get related products excluding the current product and map them to the expected format
+const relatedProducts: IRelatedProduct[] = productData.products
+  .filter((product) => product.id !== productIdNum)
+  .map((product) => ({
+    id: product.id,
+    title: product.name, // Map name to title for compatibility
+    name: product.name,
+    description: product.description,
+    image: product.image,
+    cardImage: product.cardImage,
+    originalPrice: product.originalPrice,
+    price: product.price,
+    rating: product.rating,
+  }));
 ---
 
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
-	</head>
-	<body>
-		<h1>Astro</h1>
-	</body>
-</html>
+<Layout>
+  <!-- Add client:load only to interactive components -->
+  <ProductSection 
+    client:load 
+    product={selectedProduct} 
+  />
+  
+  <RelatedProducts
+    client:visible  
+    currentProductId={productIdNum}
+    relatedProducts={relatedProducts}
+  />
+  <!-- hello -->
+  <VisitWebsite client:idle /> Lowest priority hydration
+</Layout>

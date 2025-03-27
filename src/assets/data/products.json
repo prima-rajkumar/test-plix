@@ -1,0 +1,429 @@
+{
+  "products": [
+    {
+      "id": 454,
+      "name": "Neem Anti-Dandruff Advanced Shampoo",
+      "description": "Pineapple De-pigmentation Regime with Juicy Facewash, Serum & Moisturizer",
+      "image": "/src/assets/images/product-1.webp",
+      "cardImage": "/src/assets/images/card-product-1.webp",
+      "originalPrice": 400,
+      "price": 399,
+      "rating": 4,
+      "ratingCount": 57,
+      "unitsSold": "508+",
+      "details": [
+        {
+          "key": "Product Name",
+          "value": "Neem Anti-Dandruff Advanced Shampoo"
+        },
+        {
+          "key": "Net quantity",
+          "value": "1N"
+        },
+        {
+          "key": "Net Weight",
+          "value": "200ml"
+        },
+        {
+          "key": "Ingredients",
+          "value": "Salicylic Acid, Piroctone olamine, Pentavitin, Anti dandruff complex, Neem"
+        },
+        {
+          "key": "Marketed by",
+          "value": "SATIVA NUTRACEUTICALS PVT. LTD. ADDRESS: Building No B3 G2, ASMEETA TEXTILE PARK, KALYAN-BHIWANDI RD KON, BHIWANDI, Thane, Maharashtra, 421311"
+        },
+        {
+          "key": "Manufactured By",
+          "value": "HCP WELLNESS PVT LTD. #8 Ozone Industrial Park,B/s Kerala GIDC, Bavla-Bagodara Highway, Bhayala, Ahmedabad-382220,Gujarat, India. Mfg Lic No- GC-1348"
+        },
+        {
+          "key": "Expiry Date",
+          "value": "Best before 24 months from manufacturing"
+        },
+        {
+          "key": "Country of origin",
+          "value": "INDIA"
+        }
+      ],
+      "benefits": [
+        {
+          "title": "Prevents Dandruff Recurrence",
+          "description": "Piroctone Olamine targets and inhibits dandruff-causing fungi, and Pentavitin® helps heal and strengthen the scalp.",
+          "icon": "check"
+        },
+        {
+          "title": "Exfoliates The Scalp",
+          "description": "Salicylic Acid exfoliates the scalp and effectively reduces the flaky skin and prevents it from growing back.",
+          "icon": "calendar"
+        },
+        {
+          "title": "Instant Relief From Itchy Scalp",
+          "description": "Pentavitin® keeps the scalp nourished, reducing dryness and helping restore the skin's protective barrier.",
+          "icon": "lightning"
+        },
+        {
+          "title": "Enhances Scalp Health",
+          "description": "Neem deeply nourishes the scalp, helping maintain its natural balance while soothing irritation and dryness.",
+          "icon": "database"
+        }
+      ],
+      "reviews": [
+        {
+          "rating": 5,
+          "title": "Great Product Ever!",
+          "text": "This neem shampoo cleared my dandruff and stopped the itch in just a few washes!"
+        },
+        {
+          "rating": 4,
+          "title": "Unlike others, it doesn't dry out my hair",
+          "text": "Unlike others, it doesn't dry out my hair—keeps my scalp balanced and soothed."
+        },
+        {
+          "rating": 5,
+          "title": "Worth the wait!",
+          "text": "Took a couple of weeks, but my dandruff is improving. Worth the wait!"
+        }
+      ]
+    },
+    {
+      "id": 455,
+      "name": "Neem Anti-dandruff Advanced Lotion",
+      "description": "Advanced anti-dandruff lotion for persistent scalp issues",
+      "image": "/src/assets/images/product-2.webp",
+      "cardImage": "/src/assets/images/card-product-2.webp",
+      "originalPrice": 450,
+      "price": 399,
+      "rating": 4,
+      "ratingCount": 42,
+      "unitsSold": "320+",
+      "details": [
+        {
+          "key": "Product Name",
+          "value": "Neem Anti-dandruff Advanced Lotion"
+        },
+        {
+          "key": "Net quantity",
+          "value": "1N"
+        },
+        {
+          "key": "Net Weight",
+          "value": "150ml"
+        },
+        {
+          "key": "Ingredients",
+          "value": "Neem Extract, Salicylic Acid, Tea Tree Oil, Aloe Vera, Glycerin"
+        },
+        {
+          "key": "Marketed by",
+          "value": "SATIVA NUTRACEUTICALS PVT. LTD. ADDRESS: Building No B3 G2, ASMEETA TEXTILE PARK, KALYAN-BHIWANDI RD KON, BHIWANDI, Thane, Maharashtra, 421311"
+        },
+        {
+          "key": "Manufactured By",
+          "value": "HCP WELLNESS PVT LTD. #8 Ozone Industrial Park,B/s Kerala GIDC, Bavla-Bagodara Highway, Bhayala, Ahmedabad-382220,Gujarat, India. Mfg Lic No- GC-1348"
+        },
+        {
+          "key": "Expiry Date",
+          "value": "Best before 24 months from manufacturing"
+        },
+        {
+          "key": "Country of origin",
+          "value": "INDIA"
+        }
+      ],
+      "benefits": [
+        {
+          "title": "Soothes Irritated Scalp",
+          "description": "Neem and Aloe Vera work together to calm irritation and reduce redness on the scalp.",
+          "icon": "check"
+        },
+        {
+          "title": "Controls Flaking",
+          "description": "Salicylic Acid helps remove dead skin cells and prevents flaking associated with dandruff.",
+          "icon": "calendar"
+        },
+        {
+          "title": "Balances Scalp Oils",
+          "description": "Tea Tree Oil helps regulate sebum production, preventing both dryness and excess oiliness.",
+          "icon": "lightning"
+        },
+        {
+          "title": "Long-lasting Protection",
+          "description": "Special formula creates a protective barrier that continues working throughout the day.",
+          "icon": "database"
+        }
+      ],
+      "reviews": [
+        {
+          "rating": 5,
+          "title": "Finally found relief!",
+          "text": "After trying countless products, this lotion finally gave me relief from constant itching."
+        },
+        {
+          "rating": 4,
+          "title": "Works well but strong scent",
+          "text": "The lotion is effective but has a strong medicinal smell that lingers for a while."
+        },
+        {
+          "rating": 5,
+          "title": "Great for sensitive scalps",
+          "text": "My scalp is very sensitive but this lotion caused no irritation while still fighting dandruff."
+        }
+      ]
+    },
+    {
+      "id": 456,
+      "name": "Neem Anti-Dandruff Advanced Hair Oil",
+      "description": "Intensive treatment oil for dandruff and dry scalp",
+      "image": "/src/assets/images/product-3.webp",
+      "cardImage": "/src/assets/images/card-product-3.webp",
+      "originalPrice": 450,
+      "price": 399,
+      "rating": 4,
+      "ratingCount": 38,
+      "unitsSold": "290+",
+      "details": [
+        {
+          "key": "Product Name",
+          "value": "Neem Anti-Dandruff Advanced Hair Oil"
+        },
+        {
+          "key": "Net quantity",
+          "value": "1N"
+        },
+        {
+          "key": "Net Weight",
+          "value": "100ml"
+        },
+        {
+          "key": "Ingredients",
+          "value": "Neem Oil, Coconut Oil, Rosemary Extract, Lemon Essential Oil, Vitamin E"
+        },
+        {
+          "key": "Marketed by",
+          "value": "SATIVA NUTRACEUTICALS PVT. LTD. ADDRESS: Building No B3 G2, ASMEETA TEXTILE PARK, KALYAN-BHIWANDI RD KON, BHIWANDI, Thane, Maharashtra, 421311"
+        },
+        {
+          "key": "Manufactured By",
+          "value": "HCP WELLNESS PVT LTD. #8 Ozone Industrial Park,B/s Kerala GIDC, Bavla-Bagodara Highway, Bhayala, Ahmedabad-382220,Gujarat, India. Mfg Lic No- GC-1348"
+        },
+        {
+          "key": "Expiry Date",
+          "value": "Best before 24 months from manufacturing"
+        },
+        {
+          "key": "Country of origin",
+          "value": "INDIA"
+        }
+      ],
+      "benefits": [
+        {
+          "title": "Deep Nourishment",
+          "description": "Coconut oil and Vitamin E deeply nourish the scalp and hair follicles.",
+          "icon": "check"
+        },
+        {
+          "title": "Anti-fungal Properties",
+          "description": "Neem oil's natural anti-fungal properties combat the root cause of dandruff.",
+          "icon": "calendar"
+        },
+        {
+          "title": "Stimulates Hair Growth",
+          "description": "Rosemary extract stimulates circulation to the scalp, promoting healthy hair growth.",
+          "icon": "lightning"
+        },
+        {
+          "title": "Clarifies Scalp",
+          "description": "Lemon essential oil helps clarify the scalp and remove buildup without stripping natural oils.",
+          "icon": "database"
+        }
+      ],
+      "reviews": [
+        {
+          "rating": 5,
+          "title": "Transformed my hair",
+          "text": "This oil not only eliminated my dandruff but made my hair softer and shinier than ever!"
+        },
+        {
+          "rating": 3,
+          "title": "Effective but messy",
+          "text": "Works well but it's quite thick and can be messy to apply. Needs thorough washing out."
+        },
+        {
+          "rating": 4,
+          "title": "Great overnight treatment",
+          "text": "I use this as an overnight treatment once a week and my scalp has never been healthier."
+        }
+      ]
+    },
+    {
+      "id": 457,
+      "name": "Rosemery Hair Growth Advanced Serum",
+      "description": "Concentrated serum for stimulating hair growth and thickness",
+      "image": "/src/assets/images/product-4.webp",
+      "cardImage": "/src/assets/images/card-product-4.webp",
+      "originalPrice": 900,
+      "price": 699,
+      "rating": 4,
+      "ratingCount": 65,
+      "unitsSold": "450+",
+      "details": [
+        {
+          "key": "Product Name",
+          "value": "Rosemery Hair Growth Advanced Serum"
+        },
+        {
+          "key": "Net quantity",
+          "value": "1N"
+        },
+        {
+          "key": "Net Weight",
+          "value": "50ml"
+        },
+        {
+          "key": "Ingredients",
+          "value": "Rosemary Extract, Biotin, Caffeine, Peptides, Hyaluronic Acid"
+        },
+        {
+          "key": "Marketed by",
+          "value": "SATIVA NUTRACEUTICALS PVT. LTD. ADDRESS: Building No B3 G2, ASMEETA TEXTILE PARK, KALYAN-BHIWANDI RD KON, BHIWANDI, Thane, Maharashtra, 421311"
+        },
+        {
+          "key": "Manufactured By",
+          "value": "HCP WELLNESS PVT LTD. #8 Ozone Industrial Park,B/s Kerala GIDC, Bavla-Bagodara Highway, Bhayala, Ahmedabad-382220,Gujarat, India. Mfg Lic No- GC-1348"
+        },
+        {
+          "key": "Expiry Date",
+          "value": "Best before 24 months from manufacturing"
+        },
+        {
+          "key": "Country of origin",
+          "value": "INDIA"
+        }
+      ],
+      "benefits": [
+        {
+          "title": "Stimulates Hair Follicles",
+          "description": "Rosemary extract and caffeine stimulate hair follicles, promoting new growth.",
+          "icon": "check"
+        },
+        {
+          "title": "Strengthens Hair",
+          "description": "Biotin and peptides strengthen hair from the root, reducing breakage and thinning.",
+          "icon": "calendar"
+        },
+        {
+          "title": "Hydrates Scalp",
+          "description": "Hyaluronic acid provides deep hydration to the scalp, creating an optimal environment for growth.",
+          "icon": "lightning"
+        },
+        {
+          "title": "Improves Hair Density",
+          "description": "Regular use leads to visibly thicker, fuller hair with improved density and volume.",
+          "icon": "database"
+        }
+      ],
+      "reviews": [
+        {
+          "rating": 5,
+          "title": "Seeing new growth!",
+          "text": "After 2 months of use, I'm seeing new hair growth in areas that were thinning. Amazing product!"
+        },
+        {
+          "rating": 4,
+          "title": "Good but takes time",
+          "text": "It's a good product but requires patience. Started seeing results after consistent use for 6 weeks."
+        },
+        {
+          "rating": 3,
+          "title": "Decent product",
+          "text": "I've noticed some improvement in thickness but not as dramatic as I hoped for the price."
+        }
+      ]
+    },
+    {
+      "id": 458,
+      "name": "Neem Anti-Dandruff Shampoo & Conditioner",
+      "description": "Complete anti-dandruff hair care system with matching shampoo and conditioner",
+      "image": "/src/assets/images/product-5.webp",
+      "cardImage": "/src/assets/images/card-product-5.webp",
+      "originalPrice": 850,
+      "price": 599,
+      "rating": 4,
+      "ratingCount": 72,
+      "unitsSold": "520+",
+      "details": [
+        {
+          "key": "Product Name",
+          "value": "Neem Anti-Dandruff Shampoo & Conditioner"
+        },
+        {
+          "key": "Net quantity",
+          "value": "2N"
+        },
+        {
+          "key": "Net Weight",
+          "value": "200ml + 200ml"
+        },
+        {
+          "key": "Ingredients",
+          "value": "Neem Extract, Zinc Pyrithione, Aloe Vera, Argan Oil, Tea Tree Oil"
+        },
+        {
+          "key": "Marketed by",
+          "value": "SATIVA NUTRACEUTICALS PVT. LTD. ADDRESS: Building No B3 G2, ASMEETA TEXTILE PARK, KALYAN-BHIWANDI RD KON, BHIWANDI, Thane, Maharashtra, 421311"
+        },
+        {
+          "key": "Manufactured By",
+          "value": "HCP WELLNESS PVT LTD. #8 Ozone Industrial Park,B/s Kerala GIDC, Bavla-Bagodara Highway, Bhayala, Ahmedabad-382220,Gujarat, India. Mfg Lic No- GC-1348"
+        },
+        {
+          "key": "Expiry Date",
+          "value": "Best before 24 months from manufacturing"
+        },
+        {
+          "key": "Country of origin",
+          "value": "INDIA"
+        }
+      ],
+      "benefits": [
+        {
+          "title": "Complete System",
+          "description": "Shampoo cleanses while conditioner nourishes, providing a complete anti-dandruff solution.",
+          "icon": "check"
+        },
+        {
+          "title": "Clinical-Strength Formula",
+          "description": "Zinc Pyrithione provides clinical-strength dandruff fighting power.",
+          "icon": "calendar"
+        },
+        {
+          "title": "Prevents Dryness",
+          "description": "Argan oil in the conditioner prevents the dryness often associated with anti-dandruff products.",
+          "icon": "lightning"
+        },
+        {
+          "title": "Long-Term Protection",
+          "description": "Regular use provides cumulative benefits and long-term protection against dandruff recurrence.",
+          "icon": "database"
+        }
+      ],
+      "reviews": [
+        {
+          "rating": 5,
+          "title": "Perfect combination",
+          "text": "The shampoo and conditioner work perfectly together. My dandruff is gone and my hair feels amazing!"
+        },
+        {
+          "rating": 4,
+          "title": "Great value",
+          "text": "Great value for a complete system. Works better than much more expensive salon brands I've tried."
+        },
+        {
+          "rating": 5,
+          "title": "Finally found my solution",
+          "text": "After years of struggling with dandruff, this duo has completely cleared my scalp. So grateful!"
+        }
+      ]
+    }
+  ]
+}
