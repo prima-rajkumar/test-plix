@@ -1,9 +1,21 @@
 {
-  "extends": "astro/tsconfigs/strict",
-  "include": [".astro/types.d.ts", "**/*"],
-  "exclude": ["dist"],
   "compilerOptions": {
+    "target": "ESNext",
+    "module": "ESNext",
+    "moduleResolution": "node",
+    "strict": true,
     "jsx": "react-jsx",
-    "jsxImportSource": "preact"
-  }
+    "jsxImportSource": "preact", 
+    "allowSyntheticDefaultImports": true,
+    "types": ["astro/client"],
+
+    "baseUrl": "src",  
+    "paths": {
+      "@components/*": ["components/*"],  
+      "@assets/*": ["assets/*"],
+      "@data/*": ["assets/data/*"]
+    }
+  },
+  "include": ["src/**/*", ".astro/types.d.ts"],
+  "exclude": ["node_modules"]
 }

@@ -1,9 +1,9 @@
 ---
 import Layout from "../layouts/Layout.astro";
 // Import Preact components
-import ProductSection from "../components/ProductSection.astro";
-import RelatedProducts from "../components/RelatedProducts.tsx";
-import VisitWebsite from "../components/VisitWebsite.tsx";
+import ProductSection from "@components/ProductSection.astro";
+import RelatedProducts from "../components/RelatedProducts";
+import VisitWebsite from "../components/VisitWebsite";
 import productData from "../assets/data/products.json";
 import type { IProduct, IRelatedProduct } from "../types/product.interface";
 
@@ -59,7 +59,6 @@ const relatedProducts: IRelatedProduct[] = productData.products
 <Layout>
   <!-- Add client:load only to interactive components -->
   <ProductSection 
-    client:load 
     product={selectedProduct} 
   />
   
