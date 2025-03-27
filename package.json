@@ -9,6 +9,7 @@
     "astro": "astro"
   },
   "dependencies": {
+    "@astrojs/netlify": "^6.2.4",
     "preact": "^10.26.4"
   },
   "devDependencies": {
@@ -17,6 +18,7 @@
     "astro": "^5.5.5",
     "autoprefixer": "^10.4.21",
     "postcss": "^8.5.3",
-    "tailwindcss": "^3.4.17"
+    "tailwindcss": "^3.4.17",
+    "vite": "5.0.0"
   }
 }
