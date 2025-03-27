@@ -1,6 +1,6 @@
 import { useState } from 'preact/hooks';
-import ProductDescription from "./ProductDescription.tsx";
-import ProductDetails from "./ProductDetails.tsx";
+import ProductDescription from "./ProductDescription";
+import ProductDetails from "./ProductDetails";
 import type { IProduct } from "../types/product.interface";
 
 interface Props {

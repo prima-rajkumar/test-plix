@@ -38,7 +38,7 @@ export default function ProductBenefits({ product }: Props) {
                   strokeLinecap="round"
                   strokeLinejoin="round"
                   strokeWidth={2}
-                  d={iconPaths[benefit.icon as keyof typeof iconPaths]}
+                  d={`${iconPaths[benefit.icon as keyof typeof iconPaths]}`}
                 />
               </svg>
             </div>
