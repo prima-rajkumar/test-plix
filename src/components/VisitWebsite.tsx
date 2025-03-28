@@ -1,4 +1,4 @@
-import logoIcon from "../assets/images/logo-icon.svg";
+// import logoIcon from "../assets/images/logo-icon.svg";
 
 export default function VisitWebsite() {
   return (
@@ -12,7 +12,7 @@ export default function VisitWebsite() {
       >
         <div className="flex justify-center w-full border border-ui-primary bg-ui-light-green p-2 rounded-lg items-center cursor-pointer">
           <img
-            src={logoIcon.src}
+            src={'/assets/images/logo-icon.svg'}
             alt="Primathon Logo"
             className="h-10 w-10 mr-1.5"
             width="40"

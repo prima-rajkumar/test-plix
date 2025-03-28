@@ -1,5 +1,5 @@
 import type { IProduct } from "../types/product.interface";
-import poster from "../assets/videos/product-video-poster.webp";
+// import poster from "../assets/videos/product-video-poster.webp";
 import Rating from "./Rating";
 
 interface Props {
@@ -14,7 +14,7 @@ export default function ProductVideoCard({ product }: Props) {
       {/* Background blur */}
       <div
         className="absolute inset-0 w-full h-full bg-cover bg-center blur-md"
-        style={{ backgroundImage: `url(${poster.src})` }}
+        style={{ backgroundImage: `url(${'/assets/videos/product-video-poster.webp'})` }}
         aria-hidden="true"
       />
       
@@ -25,7 +25,7 @@ export default function ProductVideoCard({ product }: Props) {
           autoPlay
           loop
           playsInline
-          poster={poster.src}
+          poster={'/assets/videos/product-video-poster.webp'}
           muted // Added muted for autoplay to work in most browsers
         >
           <source

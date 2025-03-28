@@ -1,5 +1,4 @@
 import { useCallback } from 'preact/hooks';
-import cartSvg from "../assets/images/cart.svg";
 import { CartStorage } from "../service/cartStorage";
 import { createNewCheckout, addItemToCheckout } from "../utils/cart";
 
@@ -53,7 +52,7 @@ export default function AddToCartButton({ productId, isAvailable }: Props) {
         disabled={!isAvailable}
       >
         <img
-          src={cartSvg.src}
+          src={'/assets/images/cart.svg'}
           alt="Cart"
           className="h-5 w-5 mr-2"
           width="20"

@@ -1,4 +1,3 @@
-import iconSvg from "../assets/images/icon.svg";
 
 export default function CartHeader() {
   const handleBackClick = (e: MouseEvent) => {
@@ -12,7 +11,7 @@ export default function CartHeader() {
         <div className="logo">
           <a href="/" className="cursor-pointer">
             <img
-              src={iconSvg.src}
+              src={"/assets/images/icon.svg"}
               alt="PLIX"
               className="h-6 w-20"
               height="24"

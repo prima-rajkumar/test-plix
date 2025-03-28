@@ -1,6 +1,5 @@
 import { useState } from 'preact/hooks';
 import type { IProduct } from "../types/product.interface";
-import paymentIconSvg from "../assets/images/payment-icon.svg";
 import { CartStorage } from "../service/cartStorage";
 
 interface CartItem {
@@ -119,7 +118,7 @@ export default function CartStickyPrice({ cartItems = [] }: Props) {
           >
             <div className="flex-1 text-left">PLACE ORDER</div>
             <img
-              src={paymentIconSvg.src}
+              src={'/assets/images/payment-icon.svg'}
               alt="Cart"
               className="h-7 w-auto shrink-0"
               loading="lazy"
