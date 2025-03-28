@@ -1,0 +1,49 @@
+---
+import Layout from "../layouts/Layout.astro";
+import CartPage from "../components/CartPage";
+import productData from "../assets/data/products.json";
+import RelatedProducts from "../components/RelatedProducts";
+import type { IRelatedProduct } from "../types/product.interface";
+import CartHeader from "../components/CartHeader";
+import { getRelatedProducts } from "../utils/product";
+import CartStickyPrice from "../components/CartStickyPrice";
+import { getCart } from "../utils/api";
+
+// Get the first product as the cart item for demonstration
+const firstProduct = productData.products[0];
+const secondProduct = productData.products[0];
+const thirdProduct = productData.products[0];
+
+const cartItems = [
+  {
+    product: firstProduct,
+    quantity: 1,
+  },
+  {
+    product: secondProduct,
+    quantity: 1,
+  },
+  {
+    product: thirdProduct,
+    quantity: 1,
+  },
+];
+
+// Get related products excluding the current product and map them to the expected format
+const relatedProducts: IRelatedProduct[] = getRelatedProducts(
+  productData.products,
+  [firstProduct.id, secondProduct.id, thirdProduct.id]
+);
+
+const response = getCart("a36f9aac-8406-42c1-836a-98b217c0ec88");
+
+console.log(JSON.stringify(response));
+---
+
+<Layout>
+  <CartHeader client:load />
+  <CartPage client:load  cartItems={cartItems} />
+  <RelatedProducts client:visible  relatedProducts={relatedProducts} />
+  <!-- Add the sticky price component -->
+  <CartStickyPrice client:load cartItems={cartItems} />
+</Layout>

@@ -1,13 +1,11 @@
 {
   "products": [
     {
-      "id": 454,
+      "id": "UHJvZHVjdDoxMDk0",
       "name": "Neem Anti-Dandruff Advanced Shampoo",
       "description": "Pineapple De-pigmentation Regime with Juicy Facewash, Serum & Moisturizer",
       "image": "/src/assets/images/product-1.webp",
       "cardImage": "/src/assets/images/card-product-1.webp",
-      "originalPrice": 400,
-      "price": 399,
       "rating": 4,
       "ratingCount": 57,
       "unitsSold": "508+",
@@ -86,13 +84,11 @@
       ]
     },
     {
-      "id": 455,
+      "id": "UHJvZHVjdDoz",
       "name": "Neem Anti-dandruff Advanced Lotion",
       "description": "Advanced anti-dandruff lotion for persistent scalp issues",
       "image": "/src/assets/images/product-2.webp",
       "cardImage": "/src/assets/images/card-product-2.webp",
-      "originalPrice": 450,
-      "price": 399,
       "rating": 4,
       "ratingCount": 42,
       "unitsSold": "320+",
@@ -171,13 +167,11 @@
       ]
     },
     {
-      "id": 456,
+      "id": "UHJvZHVjdDoxMTE2",
       "name": "Neem Anti-Dandruff Advanced Hair Oil",
       "description": "Intensive treatment oil for dandruff and dry scalp",
       "image": "/src/assets/images/product-3.webp",
       "cardImage": "/src/assets/images/card-product-3.webp",
-      "originalPrice": 450,
-      "price": 399,
       "rating": 4,
       "ratingCount": 38,
       "unitsSold": "290+",
@@ -256,13 +250,11 @@
       ]
     },
     {
-      "id": 457,
+      "id": "UHJvZHVjdDoxMTI3",
       "name": "Rosemery Hair Growth Advanced Serum",
       "description": "Concentrated serum for stimulating hair growth and thickness",
       "image": "/src/assets/images/product-4.webp",
       "cardImage": "/src/assets/images/card-product-4.webp",
-      "originalPrice": 900,
-      "price": 699,
       "rating": 4,
       "ratingCount": 65,
       "unitsSold": "450+",
@@ -341,13 +333,11 @@
       ]
     },
     {
-      "id": 458,
+      "id": "UHJvZHVjdDoxMTQx",
       "name": "Neem Anti-Dandruff Shampoo & Conditioner",
       "description": "Complete anti-dandruff hair care system with matching shampoo and conditioner",
       "image": "/src/assets/images/product-5.webp",
       "cardImage": "/src/assets/images/card-product-5.webp",
-      "originalPrice": 850,
-      "price": 599,
       "rating": 4,
       "ratingCount": 72,
       "unitsSold": "520+",

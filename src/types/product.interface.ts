@@ -18,13 +18,11 @@ export interface IProductReview {
 }
 
 export interface IProduct {
-  id: number;
+  id: string;
   name: string;
   description: string;
   image: string; // Main detailed product image
   cardImage: string; // Optimized image for card display
-  originalPrice: number;
-  price: number;
   rating: number;
   ratingCount: number;
   unitsSold: string;
@@ -34,13 +32,11 @@ export interface IProduct {
 }
 
 export interface IRelatedProduct {
-  id: number;
+  id: string;
   title: string;
   name: string;
   description: string;
   image: string; // Main detailed product image
   cardImage: string; // Optimized image for card display
-  originalPrice: number;
-  price: number;
   rating: number;
 }

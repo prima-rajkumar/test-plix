@@ -1,56 +1,56 @@
-import { useState } from 'preact/hooks';
+import { useCallback } from 'preact/hooks';
 import cartSvg from "../assets/images/cart.svg";
-import { createCheckoutAndAddToCart } from "../utils/api";
+import { CartStorage } from "../service/cartStorage";
+import { createNewCheckout, addItemToCheckout } from "../utils/cart";
 
 interface Props {
-  productId: number | string;
+  productId: string;
+  isAvailable: boolean;
+  quantityAvailable?: number;
+  price: number;
 }
 
-export default function AddToCartButton({ productId }: Props) {
-  const [isLoading, setIsLoading] = useState(false);
-  const [message, setMessage] = useState('');
-  const [isError, setIsError] = useState(false);
+export default function AddToCartButton({ productId, isAvailable }: Props) {
+  const goToCart = useCallback(() => {
+    window.location.href = "/cart";
+  }, []);
 
-  const handleAddToCart = async () => {
-    console.log("Adding to cart...");
-    setIsLoading(true);
-    setIsError(false);
-    setMessage('');
+  const onAddToCartClick = useCallback(async (event: MouseEvent) => {
+    event.preventDefault();
+    event.stopPropagation();
+
+    const checkoutId = CartStorage.getCheckoutId();
+    const tokenId = CartStorage.getCheckoutToken();
+
+    if (checkoutId && tokenId) {
+      try {
+        await addItemToCheckout(tokenId, productId);
+        goToCart();
+      } catch (error) {
+        console.error("Error adding item to checkout:", error);
+      }
+      return;
+    }
 
     try {
-      const response = await createCheckoutAndAddToCart(productId.toString(), 1);
-
-      if (response.success) {
-        setMessage("Product added to cart successfully!");
-      } else {
-        throw new Error(response.error || "Failed to add product to cart");
-      }
-    } catch (error: unknown) {
-      console.error("Error adding to cart:", error);
-      const errorMessage = error instanceof Error 
-        ? error.message 
-        : "Failed to add product to cart";
-      setMessage(errorMessage);
-      setIsError(true);
-    } finally {
-      setIsLoading(false);
-      
-      // Clear message after 3 seconds
-      setTimeout(() => {
-        setMessage('');
-      }, 3000);
+      const { id, token } = await createNewCheckout(productId);
+      CartStorage.saveCheckoutId(id as string);
+      CartStorage.saveCheckoutToken(token as string);
+      goToCart();
+    } catch (error) {
+      console.error("Error creating checkout:", error);
     }
-  };
+  }, [productId, goToCart]);
 
   return (
     <div className="add-to-cart-container">
       <button
         id={`add-to-cart-btn-${productId}`}
-        className={`w-full bg-ui-dark hover:bg-green-800 text-white py-3 px-4 rounded-md flex items-center justify-center ${
-          isLoading ? 'opacity-75 cursor-not-allowed' : ''
+        className={`w-full bg-ui-medium text-white py-3 px-4 rounded-md flex items-center justify-center ${
+          !isAvailable ? 'opacity-50 cursor-not-allowed' : ''
         }`}
-        onClick={handleAddToCart}
-        disabled={isLoading}
+        onClick={onAddToCartClick}
+        disabled={!isAvailable}
       >
         <img
           src={cartSvg.src}
@@ -59,19 +59,8 @@ export default function AddToCartButton({ productId }: Props) {
           width="20"
           height="20"
         />
-        {isLoading ? 'Adding to cart...' : 'Add to cart'}
+        {isAvailable ? 'Add to cart' : 'Out of stock'}
       </button>
-      
-      {message && (
-        <div 
-          id={`cart-message-${productId}`}
-          className={`mt-2 text-center ${
-            isError ? 'text-red-500' : 'text-green-500'
-          }`}
-        >
-          {message}
-        </div>
-      )}
     </div>
   );
 }
