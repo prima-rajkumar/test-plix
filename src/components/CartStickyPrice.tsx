@@ -1,4 +1,4 @@
-import { useState } from 'preact/hooks';
+import { useEffect, useState } from 'preact/hooks';
 import type { IProduct } from "../types/product.interface";
 import { CartStorage } from "../service/cartStorage";
 
@@ -51,6 +51,13 @@ export default function CartStickyPrice({ cartItems = [] }: Props) {
       console.log("GoKwik SDK initialized");
     }
   };
+
+  useEffect(() => {
+    const script = document.createElement("script");
+    script.src = "https://sandbox.pdp.gokwik.co/build/gokwik.js";
+    script.async = true;
+    document.body.appendChild(script);
+  }, []);
 
   const handlePlaceOrder = () => {
     initGoKwik();

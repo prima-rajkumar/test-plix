@@ -16,6 +16,7 @@ export default function CartHeader() {
               className="h-6 w-20"
               height="24"
               width="80"
+              loading={'lazy'}
             />
           </a>
         </div>

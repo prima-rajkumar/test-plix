@@ -66,6 +66,7 @@ export default function CartPage({ cartItems = [] }: Props) {
                         src={product.image}
                         alt={product.name}
                         className="w-full h-full object-cover"
+                        loading={'lazy'}
                       />
                     </div>
                     <div className="ml-4 flex-1">

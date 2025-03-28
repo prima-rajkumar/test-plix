@@ -57,6 +57,7 @@ export default function AddToCartButton({ productId, isAvailable }: Props) {
           className="h-5 w-5 mr-2"
           width="20"
           height="20"
+          loading={'lazy'}
         />
         {isAvailable ? 'Add to cart' : 'Out of stock'}
       </button>
