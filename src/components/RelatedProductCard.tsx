@@ -51,7 +51,6 @@ export default function RelatedProductCard({ product }: Props) {
             src={product.cardImage}
             alt={product.title}
             className="w-full aspect-square object-contain transition-transform duration-300 group-hover:scale-105"
-            loading="lazy"
           />
         </div>
       </div>

@@ -128,7 +128,6 @@ export default function CartStickyPrice({ cartItems = [] }: Props) {
               src={'/assets/images/payment-icon.svg'}
               alt="Cart"
               className="h-7 w-auto shrink-0"
-              loading="lazy"
             />
           </button>
         </div>

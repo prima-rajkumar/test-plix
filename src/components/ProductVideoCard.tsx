@@ -45,7 +45,6 @@ export default function ProductVideoCard({ product }: Props) {
               src={cardImage}
               alt={name}
               className="w-32 h-32 aspect-square object-contain"
-              loading="lazy"
             />
           </div>
           

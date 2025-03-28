@@ -49,7 +49,6 @@ export default function ProductCard({ product }: Props) {
           src={image}
           alt={name}
           className="w-full h-full object-cover mx-auto"
-          loading="lazy"
         />
       </div>
 

@@ -24,7 +24,6 @@ export default function Header() {
             class="h-5 w-6"
             height="20"
             width="24"
-            loading={'lazy'}
           />
          
         </a>

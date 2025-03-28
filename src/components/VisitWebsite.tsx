@@ -17,7 +17,6 @@ export default function VisitWebsite() {
             className="h-10 w-10 mr-1.5"
             width="40"
             height="40"
-            loading={'lazy'}
           />
           <span>Visit Website to view more</span>
         </div>
