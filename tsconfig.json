@@ -1,21 +1,26 @@
 {
+  "extends": "astro/tsconfigs/strict",
   "compilerOptions": {
-    "target": "ESNext",
-    "module": "ESNext",
-    "moduleResolution": "node",
-    "strict": true,
     "jsx": "react-jsx",
-    "jsxImportSource": "preact", 
-    "allowSyntheticDefaultImports": true,
-    "types": ["astro/client"],
-
-    "baseUrl": "src",  
+    "jsxImportSource": "preact",
+    "baseUrl": ".",
     "paths": {
-      "@components/*": ["components/*"],  
-      "@assets/*": ["assets/*"],
-      "@data/*": ["assets/data/*"]
-    }
+      "@components/*": ["src/components/*"],
+      "@layouts/*": ["src/layouts/*"],
+      "@utils/*": ["src/utils/*"],
+      "@assets/*": ["src/assets/*"]
+    },
+    "types": ["@astrojs/cloudflare/client"],
+    "strict": true,
+    "skipLibCheck": true
   },
-  "include": ["src/**/*", ".astro/types.d.ts"],
-  "exclude": ["node_modules"]
+  "include": [
+    ".astro/types.d.ts",
+    "**/*",
+    "node_modules/@astrojs/cloudflare/client.d.ts"
+  ],
+  "exclude": [
+    "dist",
+    "node_modules"
+  ]
 }

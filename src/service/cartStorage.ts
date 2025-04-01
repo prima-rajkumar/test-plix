@@ -1,54 +1,80 @@
+import type { ICheckoutResponse } from "../types/checkout.interface";
+import type { ICartProduct } from "../types/product.interface";
 import {
   getStorageItem,
   removeStorageItem,
   setStorageItem,
 } from "./storageService";
+import { cartEvents } from "./eventCartService";
 
 /**
  * Utility class for cart management using localStorage
  */
 export class CartStorage {
-  private static readonly CHECKOUT_ID_KEY = "plix_checkout_id";
-  private static readonly CHECKOUT_TOKEN_KEY = "plix_checkout_token";
-
-  static saveCheckoutId(
-    checkoutId: string,
-    expiryInMinutes: number = 10080
-  ): void {
-    setStorageItem(this.CHECKOUT_ID_KEY, checkoutId, expiryInMinutes);
-  }
+  private static readonly CHECKOUT_KEY = "data_checkout";
 
   static getCheckoutId(): string | null {
-    return getStorageItem<string | null>(this.CHECKOUT_ID_KEY, null);
-  }
-
-  static clearCheckoutId(): void {
-    removeStorageItem(this.CHECKOUT_ID_KEY);
-  }
-
-  static saveCheckoutToken(
-    checkoutToken: string,
-    expiryInMinutes: number = 10080
-  ): void {
-    setStorageItem(this.CHECKOUT_TOKEN_KEY, checkoutToken, expiryInMinutes);
+    const data = this.getCart();
+    return data?.id || null;
   }
 
   static getCheckoutToken(): string | null {
-    return getStorageItem<string | null>(this.CHECKOUT_TOKEN_KEY, null);
+    const data = this.getCart();
+    return data?.token || null;
+  }
+  static getCartTotal(): number {
+    const data = this.getCart();
+    return (
+      data?.lines.reduce((total, line) => {
+        const amount = parseFloat(line.totalPrice.net.amount);
+        const count = line.quantity;
+        return total + (isNaN(amount) ? 0 : amount * count);
+      }, 0) || 0
+    );
   }
 
-  static clearCheckoutToken(): void {
-    removeStorageItem(this.CHECKOUT_TOKEN_KEY);
+  static getCartItemCount(): number {
+    const data = this.getCart();
+    return (
+      data?.lines.reduce((total, line) => {
+        const count = line.quantity;
+        return total + (isNaN(count) ? 0 : count);
+      }, 0) || 0
+    );
   }
 
-  static clear(): boolean {
-    try {
-      removeStorageItem(this.CHECKOUT_ID_KEY);
-      removeStorageItem(this.CHECKOUT_TOKEN_KEY);
-      return true;
-    } catch (error) {
-      console.error("Error clearing cart:", error);
-      return false;
-    }
+  static saveCart(
+    data: ICheckoutResponse,
+    expiryInMinutes: number = 10080
+  ): void {
+    setStorageItem(this.CHECKOUT_KEY, data, expiryInMinutes);
+
+    // Publish cart updated event
+    cartEvents.publish("cart:updated", data);
+  }
+
+  static getCart(): ICheckoutResponse | null {
+    return getStorageItem<ICheckoutResponse | null>(this.CHECKOUT_KEY, null);
+  }
+
+  static getCartProducts(): ICartProduct[] {
+    const data = this.getCart();
+    return (
+      data?.lines.map((line) => {
+        return {
+          id: line.variant.product.id,
+          variantId: line.variant.id,
+          name: line.variant.product.name,
+          cardImage: line.variant.product.thumbnail.url,
+          price: line.totalPrice.net.amount,
+          currency: line.totalPrice.net.currency,
+          quantity: line.quantity,
+        };
+      }) || []
+    );
+  }
+
+  static clearCart(): void {
+    removeStorageItem(this.CHECKOUT_KEY);
   }
 }

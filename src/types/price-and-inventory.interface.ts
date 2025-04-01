@@ -14,15 +14,19 @@ export interface IPricing {
   price: IPrice;
 }
 
-export interface IDefaultVariantPriceAndInventory {
+export interface IProductPrice {
   id: string;
-  isAvailable: boolean;
-  quantityAvailable: number;
-  pricing: IPricing;
+  defaultVariant: {
+    pricing: IPricing;
+  };
 }
 
-export interface IProductPriceAndInventory {
+export interface IProductInventory {
   id: string;
   isAvailableForPurchase: boolean;
-  defaultVariant: IDefaultVariantPriceAndInventory;
+  defaultVariant: {
+    id: string;
+    isAvailable: boolean;
+    quantityAvailable: number;
+  };
 }

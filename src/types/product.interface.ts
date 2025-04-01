@@ -40,3 +40,13 @@ export interface IRelatedProduct {
   cardImage: string; // Optimized image for card display
   rating: number;
 }
+
+export interface ICartProduct {
+  id: string;
+  variantId: string;
+  name: string;
+  cardImage: string;
+  price: string;
+  currency: string;
+  quantity: number;
+}

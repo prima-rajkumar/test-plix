@@ -1,90 +1,78 @@
-import { addToCart, createCheckout, updateCart } from "./api";
+import { addToCart, updateCart } from "../api";
+import { CartStorage } from "../service/cartStorage";
+import type { ICheckoutLine } from "../api/api.interface";
+import type { ICheckoutResponse } from "../types/checkout.interface";
 
-interface ICreateCheckout {
-  id: string | null;
-  token: string | null;
-}
-
-export const createNewCheckout = async (
-  productId: string
-): Promise<ICreateCheckout> => {
+export const incrementCartItem = async (
+  variantId: string,
+  quantity: number = 1
+): Promise<boolean> => {
   try {
-    const response = await createCheckout([
-      {
-        variantId: productId,
-        quantity: 1,
-      },
-    ]);
+    // Get the current checkout ID
+    const checkoutToken = CartStorage.getCheckoutToken();
 
-    if (response?.success) {
-      return {
-        id: response.data.id,
-        token: response.data.token,
-      };
+    if (!checkoutToken) {
+      console.error("No checkout ID found");
+      return false;
     }
-  } catch (error) {
-    console.error(`Error creating checkout for product ${productId}:`, error);
-  }
 
-  return {
-    id: null,
-    token: null,
-  };
+    // Prepare the line item
+    const lines: ICheckoutLine[] = [
+      {
+        variantId,
+        quantity,
+      },
+    ];
+
+    // Call the API to add to cart
+    const response = await addToCart(checkoutToken, lines);
+
+    if (response.success && response.data) {
+      // Save the updated cart data
+      CartStorage.saveCart(response.data as ICheckoutResponse);
+      return true;
+    }
+
+    return false;
+  } catch (error) {
+    console.error("Error incrementing cart item:", error);
+    return false;
+  }
 };
 
-export const addItemToCheckout = async (
-  token: string,
-  productId: string
-): Promise<ICreateCheckout> => {
+export const removeCartItem = async (
+  variantId: string,
+  quantity = 0
+): Promise<boolean> => {
   try {
-    const response = await addToCart(token, [
-      {
-        variantId: productId,
-        quantity: 1,
-      },
-    ]);
+    // Get the current checkout ID
+    const checkoutToken = CartStorage.getCheckoutToken();
 
-    if (response?.success) {
-      return {
-        id: response.data.id,
-        token: response.data.token,
-      };
+    if (!checkoutToken) {
+      console.error("No Checkout Token ID found");
+      return false;
     }
-  } catch (error) {
-    console.error(`Error creating checkout for product ${productId}:`, error);
-  }
 
-  return {
-    id: null,
-    token: null,
-  };
-};
-
-export const updateItemToCheckout = async (
-  toekn: string,
-  productId: string,
-  quantity: number
-): Promise<ICreateCheckout> => {
-  try {
-    const response = await updateCart(toekn, [
+    // Prepare the line item with quantity 0 to remove it
+    const lines: ICheckoutLine[] = [
       {
-        variantId: productId,
-        quantity: quantity,
+        variantId,
+        quantity,
       },
-    ]);
+    ];
 
-    if (response?.success) {
-      return {
-        id: response.data.id,
-        token: response.data.token,
-      };
+    // Call the API to update the cart
+    const response = await updateCart(checkoutToken, lines);
+
+    if (response.success && response.data) {
+      // Save the updated cart data
+      CartStorage.saveCart(response.data as ICheckoutResponse);
+      return true;
     }
-  } catch (error) {
-    console.error(`Error creating checkout for product ${productId}:`, error);
-  }
 
-  return {
-    id: null,
-    token: null,
-  };
+    return false;
+  } catch (error) {
+    console.error("Error removing cart item:", error);
+    return false;
+  }
 };

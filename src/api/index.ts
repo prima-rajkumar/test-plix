@@ -1,15 +1,15 @@
-/**
- * API utility functions for PLIX API
- */
-
+import type { ICheckoutResponse } from "../types/checkout.interface";
 import type {
   IApiResponse,
   ICartRequest,
   ICheckoutLine,
   ICreateCheckoutRequest,
 } from "./api.interface";
-import { decodeBase64 } from "./decodeBase64";
-import type { IProductPriceAndInventory } from "./price-and-inventory.interface";
+import { decodeBase64 } from "../utils/decodeBase64";
+import type {
+  IProductPrice,
+  IProductInventory,
+} from "../types/price-and-inventory.interface";
 
 // Base API URL
 const API_BASE_URL = "https://plixlifehapi.farziengineer.co";
@@ -25,9 +25,9 @@ const getDecodedLines = (lines: ICheckoutLine[]) => {
   });
 };
 
-export const getProductPriceAndInventry = async (
+export const getProductPrice = async (
   productId: string
-): Promise<IApiResponse<IProductPriceAndInventory>> => {
+): Promise<IApiResponse<IProductPrice>> => {
   try {
     const response = await fetch(`${API_BASE_URL}/graphql/?source=website`, {
       method: "POST",
@@ -51,19 +51,67 @@ export const getProductPriceAndInventry = async (
             }
           }
 
+          query GetProductDetails($id: ID!) {
+            product(id: $id) {
+              id
+              defaultVariant {
+                pricing {
+                  onSale
+                  priceUndiscounted {
+                    ...Price
+                  }
+                  price {
+                    ...Price
+                  }
+                }
+              }
+            }
+          }
+        `,
+      }),
+    });
+
+    if (!response.ok) {
+      const errorData = await response.json().catch(() => ({}));
+      throw new Error(
+        errorData.message ||
+          `API error: ${response.status} ${response.statusText}`
+      );
+    }
+
+    const jsonResponse = await response.json();
+    return {
+      success: true,
+      data: jsonResponse.data.product,
+    };
+  } catch (error) {
+    console.error("Product Price API request failed:", error);
+    return {
+      success: false,
+      error: error instanceof Error ? error.message : "Unknown error occurred",
+    };
+  }
+};
+
+export const getProductInventry = async (
+  productId: string
+): Promise<IApiResponse<IProductInventory>> => {
+  try {
+    const response = await fetch(`${API_BASE_URL}/graphql/?source=website`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        operationName: "GetProductDetails",
+        variables: {
+          id: productId,
+        },
+        query: `
           fragment ProductVariantFields on ProductVariant {
             id
             isAvailable
             quantityAvailable(countryCode: IN)
-            pricing {
-              onSale
-              priceUndiscounted {
-                ...Price
-              }
-              price {
-                ...Price
-              }
-            }
           }
 
           query GetProductDetails($id: ID!) {
@@ -101,87 +149,11 @@ export const getProductPriceAndInventry = async (
   }
 };
 
-export const getCart = async (
-  checkoutToken: string
-): Promise<IApiResponse<IProductPriceAndInventory>> => {
-  try {
-    const response = await fetch(`${API_BASE_URL}/graphql/?source=website`, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        operationName: "checkout",
-        variables: {
-          checkoutToken: checkoutToken,
-        },
-        query: `
-          query checkout(id: $checkoutToken) {
-            checkoutUrl
-            created
-            lines {
-              quantity
-              totalPrice {
-                net {
-                  currency
-                  amount
-                }
-              }
-              variant {
-                name
-                sku
-                product {
-                  id
-                  name
-                }
-              }
-            }
-            totalPrice {
-              currency
-              gross{
-                currency
-                amount
-              }
-            }
-            subtotalPrice {
-              currency
-              gross {
-                currency
-                amount
-              }
-            }
-          }
-        `,
-      }),
-    });
-
-    if (!response.ok) {
-      const errorData = await response.json().catch(() => ({}));
-      throw new Error(
-        errorData.message ||
-          `API error: ${response.status} ${response.statusText}`
-      );
-    }
-
-    const jsonResponse = await response.json();
-    return {
-      success: true,
-      data: jsonResponse.data,
-    };
-  } catch (error) {
-    console.error("Product Price API request failed:", error);
-    return {
-      success: false,
-      error: error instanceof Error ? error.message : "Unknown error occurred",
-    };
-  }
-};
-
 export const createCheckout = async (
   lines: ICheckoutLine[],
   email: string = "dummy@dummy.com",
   isRecalculate: boolean = true
-): Promise<IApiResponse<any>> => {
+): Promise<IApiResponse<ICheckoutResponse>> => {
   try {
     const requestBody: ICreateCheckoutRequest = {
       checkoutInput: {
@@ -222,13 +194,13 @@ export const createCheckout = async (
 };
 
 export const addToCart = async (
-  checkoutId: string,
+  checkoutToken: string,
   lines: ICheckoutLine[],
   isRecalculate: boolean = true
-): Promise<IApiResponse<any>> => {
+): Promise<IApiResponse<ICheckoutResponse>> => {
   try {
     const requestBody: ICartRequest = {
-      checkoutId,
+      checkoutId: checkoutToken,
       lines: getDecodedLines(lines),
       isRecalculate,
     };
@@ -264,13 +236,13 @@ export const addToCart = async (
 };
 
 export const updateCart = async (
-  checkoutId: string,
+  checkoutToken: string,
   lines: ICheckoutLine[],
   isRecalculate: boolean = true
-): Promise<IApiResponse<any>> => {
+): Promise<IApiResponse<ICheckoutResponse>> => {
   try {
     const requestBody: ICartRequest = {
-      checkoutId,
+      checkoutId: checkoutToken,
       lines: getDecodedLines(lines),
       isRecalculate,
     };
